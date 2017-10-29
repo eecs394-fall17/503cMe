@@ -8,39 +8,39 @@
 
 <ion-content>
 	<ion-item>
-		<img src="../assets/imgs/acer-chromebook.jpeg" alt="Acer Chromebook"> 
-		<h1> Acer Chromebook </h1>
-		<p> 11.6–Inch Laptop (Intel Celeron N2840 Dual–Core Processor, 2 GB RAM, 16 GB Solid State Drive</p>
+		<h1>Donation Wishlist (1)</h1>
 	</ion-item>
-
-
-	<ion-item>
-		<ion-label>Quantity</ion-label>
-		<ion-select [(ngModel)]="quantity">
-			<ion-option value="1">1</ion-option>
-			<ion-option value="2">2</ion-option>
-			<ion-option value="3">3</ion-option>
-			<ion-option value="4">4</ion-option>
-			<ion-option value="5">5</ion-option>
-			<ion-option value="6">6</ion-option>
-			<ion-option value="7">7</ion-option>
-			<ion-option value="8">8</ion-option>
-			<ion-option value="9">9</ion-option>
-			<ion-option value="10">10</ion-option>
-			<ion-option value="11">11</ion-option>
-			<ion-option value="12">12</ion-option>
-		</ion-select>
-		
-	
-</ion-item>
-<button ion-button round>Donate</button>
+	<ion-card>
+		<ion-item>
+			<img src="../assets/imgs/acer-chromebook.jpeg" width="7" alt="Acer Chromebook">
+			<h1> Acer Chromebook </h1>
+			<p> 11.6–Inch Laptop (Intel Celeron N2840 Dual–Core Processor, 2 GB RAM, 16 GB Solid State Drive</p>
+		</ion-item>
+		<table width="100%">
+			<tr>
+				<td width="25" algin="left">
+					<ion-item>
+						<ion-label>Quantity</ion-label>
+						<ion-select [(ngModel)]="quantity">
+							<ion-option value="1">1</ion-option>
+							<ion-option value="2">2</ion-option>
+							<ion-option value="3">3</ion-option>
+							<ion-option value="4">4</ion-option>
+							<ion-option value="5">5</ion-option>
+							<ion-option value="6">6</ion-option>
+							<ion-option value="7">7</ion-option>
+							<ion-option value="8">8</ion-option>
+							<ion-option value="9">9</ion-option>
+							<ion-option value="10">10</ion-option>
+							<ion-option value="11">11</ion-option>
+							<ion-option value="12">12</ion-option>
+						</ion-select>	
+					</ion-item>
+				</td>
+				<td width="75%" align="right">
+					<button ion-button round block>Donate</button>
+				</td>
+			</tr>
+		</table>
+	</ion-card>
 </ion-content>
-
-
-<!-- <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
-</ion-content>
--->
