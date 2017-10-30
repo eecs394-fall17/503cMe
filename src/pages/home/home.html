@@ -7,40 +7,69 @@
 </ion-header>
 
 <ion-content>
-	<ion-item>
-		<h1>Donation Wishlist (1)</h1>
-	</ion-item>
 	<ion-card>
-		<ion-item>
-			<img src="../assets/imgs/acer-chromebook.jpeg" alt="Acer Chromebook">
-			<h1> Acer Chromebook </h1>
-			<p> 11.6–Inch Laptop Intel Celeron N2840 Dual–Core Processor, 2 GB RAM, 16 GB Solid State Drive</p>
-		</ion-item>
-		<table width="100%">
-			<tr>
-				<td width="25" algin="left">
-					<ion-item>
-						<ion-label>Quantity</ion-label>
-						<ion-select [(ngModel)]="quantity">
-							<ion-option value="1">1</ion-option>
-							<ion-option value="2">2</ion-option>
-							<ion-option value="3">3</ion-option>
-							<ion-option value="4">4</ion-option>
-							<ion-option value="5">5</ion-option>
-							<ion-option value="6">6</ion-option>
-							<ion-option value="7">7</ion-option>
-							<ion-option value="8">8</ion-option>
-							<ion-option value="9">9</ion-option>
-							<ion-option value="10">10</ion-option>
-							<ion-option value="11">11</ion-option>
-							<ion-option value="12">12</ion-option>
-						</ion-select>	
+		<ion-card-content>
+			<ion-item>
+				<img src="../assets/imgs/st-anthony-school.jpg" alt="St Anthony">
+				<h1 id="nponame"> St. Anthony Lower Elementary School </h1>
+				<h2 id="npoplace"> Milwaukee, WI </h2>
+				<div text-wrap class = "item item-divider" style="width:100%;">
+					<ion-item  *ngFor="let d of data" >
+						<ion-icon name="arrow-down" color="primary" item-right (click)="toggleDetails(d)"></ion-icon>
+						<div *ngIf="d.showDetails">
+							<div>
+								{{d.summary}}
+							</div><br>
+							<div>
+								{{d.address}}
+							</div>
+								{{d.state}}
+							<div>
+								{{d.phone}}
+							</div><br>
+							<div>
+								{{d.details}}
+							</div>
+						</div>
 					</ion-item>
-				</td>
-				<td width="75%" align="right">
-					<button ion-button round block (click)="Donate()">Donate</button>
-				</td>
-			</tr>
-		</table>
+				</div>
+			</ion-item>
+			<ion-card>
+				<ion-item>
+					<h1>Donation Wishlist (1)</h1>
+				</ion-item>
+				<ion-item>
+					<img src="../assets/imgs/acer-chromebook.jpeg" alt="Acer Chromebook">
+					<h1> Acer Chromebook </h1>
+					<p> 11.6–Inch Laptop Intel Celeron N2840 Dual–Core Processor, 2 GB RAM, 16 GB Solid State Drive</p>
+				</ion-item>
+				<table width="100%">
+					<tr>
+						<td width="25" algin="left">
+							<ion-item>
+								<ion-label>Quantity</ion-label>
+								<ion-select [(ngModel)]="quantity">
+									<ion-option value="1">1</ion-option>
+									<ion-option value="2">2</ion-option>
+									<ion-option value="3">3</ion-option>
+									<ion-option value="4">4</ion-option>
+									<ion-option value="5">5</ion-option>
+									<ion-option value="6">6</ion-option>
+									<ion-option value="7">7</ion-option>
+									<ion-option value="8">8</ion-option>
+									<ion-option value="9">9</ion-option>
+									<ion-option value="10">10</ion-option>
+									<ion-option value="11">11</ion-option>
+									<ion-option value="12">12</ion-option>
+								</ion-select>	
+							</ion-item>
+						</td>
+						<td width="75%" align="right">
+							<button ion-button round block (click)="Donate()">Donate</button>
+						</td>
+					</tr>
+				</table>
+			</ion-card>
+		</ion-card-content>
 	</ion-card>
 </ion-content>
