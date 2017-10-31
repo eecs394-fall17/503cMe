@@ -17,8 +17,8 @@ export class DonatedPage {
 
   constructor(private viewCtrl: ViewController) {
   }
-  
-  dismiss(data) {
+
+  dismiss(data?) {
 	this.viewCtrl.dismiss(data);
   }
 
