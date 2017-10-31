@@ -12,7 +12,7 @@ import { DonatedPage } from '../pages/donated/donated';
   declarations: [
     MyApp,
     HomePage,
-	DonatedPage
+    DonatedPage
   ],
   imports: [
     BrowserModule,
@@ -22,12 +22,12 @@ import { DonatedPage } from '../pages/donated/donated';
   entryComponents: [
     MyApp,
     HomePage,
-	DonatedPage
+    DonatedPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })
-export class AppModule {}
+export class AppModule { }
