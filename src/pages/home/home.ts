@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { NavController, ModalController } from 'ionic-angular';
 import { DonatedPage } from '../donated/donated';
 
+import { AngularFirestore } from 'angularfire2/firestore';
+import { Observable } from 'rxjs/Observable';
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -10,11 +13,9 @@ export class HomePage {
 
   data: { summary: string, address: string, state: string, phone: string, details: string };
   showDetails: boolean;
-  currentQuantity: number;
-  maxQuantity: number;
-  quantityOptions: number[] = [];
+  donations: Observable<any>;
 
-  constructor(public navCtrl: NavController, public modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController, public modalCtrl: ModalController, db: AngularFirestore) {
     this.data = {
       summary: '4k – 2nd Grade',
       address: '1669 S. 5th Street',
@@ -23,18 +24,26 @@ export class HomePage {
       details: 'For families, a St. Anthony School education is truly a gift of hope. It\'s the knowledge that their children will be formed not only academically, but in the faith; that each student is assisted on the path to their own unique vocation. St. Anthony is not just a school, its a family.Your donations will contribute experiences inside and outside the classroom giving students opportunities to grow as whole people through academics, music, theatre, dance, athletics, service, and after-school programming, and a variety of student organizations and clubs.'
     };
     this.showDetails = false;
-    this.currentQuantity = 0;
-    this.maxQuantity = 30;
-    for (var i = 1; i <= this.maxQuantity - this.currentQuantity; i++) {
-      this.quantityOptions.push(i);
-    }
+    this.donations = db.collection('donations').valueChanges();
   }
 
   toggleDetails() {
     this.showDetails = !this.showDetails;
   }
 
-  Donate() {
+  donate(quantity: number) {
     this.modalCtrl.create(DonatedPage).present();
+  }
+
+  donationQuantityIterable(curr: number, max:number) {
+    var result = [];
+    for (var i = 1; i <= max - curr; i++) {
+      result.push(i);
+    }
+    return result;
+  }
+
+  Test(n:number) {
+    console.log(n);
   }
 }
