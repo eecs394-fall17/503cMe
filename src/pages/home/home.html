@@ -36,6 +36,15 @@
       <h4 style="display: inline-block;">${{ donation.price }}</h4>
       <h4 style="display: inline-block;" *ngIf="donation.quantity"> x {{ donation.quantity }} =</h4>
       <h4 style="display: inline-block; font-weight:500;" *ngIf="donation.quantity">${{donation.quantity * donation.price}}</h4>
+      <div class="progress-outer">
+        <div class="progress-inner" [style.width]="donation.donatedAmount / donation.requestAmount * 100 + '%'">
+        </div>
+      </div>
+      <div class="donation-info">
+        <p>({{ donation.donatedAmount }}) Donated</p>
+        <p>({{ donation.requestAmount }}) Requested</p>
+      </div>
+
       <div class="horizontal-group">
         <ion-item class="quantity-select">
           <ion-label>Quantity</ion-label>
