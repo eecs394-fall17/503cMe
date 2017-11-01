@@ -12,6 +12,8 @@ import { DonatedPage } from '../pages/donated/donated';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 
+import { IonAffixModule } from 'ion-affix'
+
 // AF2 Settings
 export const firebaseConfig = {
     apiKey: "AIzaSyBVk4WXC62YrsOIVP36p-89eh1gVwHxZcA",
@@ -32,7 +34,8 @@ export const firebaseConfig = {
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    IonAffixModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
