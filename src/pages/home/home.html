@@ -42,11 +42,11 @@
         <div class="horizontal-group">
           <ion-item class="quantity-select">
             <ion-label>Quantity</ion-label>
-            <ion-select [(ngModel)]="donation.quantity" id="quant">
+            <ion-select [(ngModel)]="donation.quantity" [disabled]="Disabled(donation)">
               <ion-option *ngFor="let n of donationQuantityIterable(donation.donatedAmount, donation.requestAmount)" value="{{n}}">{{n}}</ion-option>
             </ion-select>
           </ion-item>
-          <button ion-button id="donate" (click)="donate(donation.quantity)">Donate</button>
+          <button ion-button [disabled]="Disabled(donation)" (click)="donate(donation.quantity)">Donate</button>
         </div>
         <br /><br />
 	  </div>

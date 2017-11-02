@@ -37,13 +37,21 @@ export class HomePage {
 	var style = '';
 	if (don.donatedAmount >= don.requestAmount) {
 	  style = 'opacity: 0.2;';
-	  //document.getElementById('quant').disabled = "true";
-	  //document.getElementById('donate').disabled = "true";
 	  return this.sanitizer.bypassSecurityTrustStyle(style);
 	}
 	else {
 		return style;
 	}
+  }
+  
+  Disabled(don: any) {
+	  //return this.disableSelector;
+	  if (don.donatedAmount >= don.requestAmount) {
+		  return true;
+	  }
+	  else {
+		  return false;
+	  }
   }
 
   donate(id: string, orig: any, quantity: any) {
