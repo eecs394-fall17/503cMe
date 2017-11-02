@@ -37,8 +37,8 @@ export class HomePage {
 	var style = '';
 	if (don.donatedAmount >= don.requestAmount) {
 	  style = 'opacity: 0.2;';
-	  document.getElementById('quant').disabled = "true";
-	  document.getElementById('donate').disabled = "true";
+	  //document.getElementById('quant').disabled = "true";
+	  //document.getElementById('donate').disabled = "true";
 	  return this.sanitizer.bypassSecurityTrustStyle(style);
 	}
 	else {
@@ -46,7 +46,10 @@ export class HomePage {
 	}
   }
 
-  donate(quantity: number) {
+  donate(id: string, orig: any, quantity: any) {
+    this.db.collection('donations').doc(id).update({
+      donatedAmount: parseInt(orig) + parseInt(quantity)
+    });
     this.modalCtrl.create(DonatedPage).present();
   }
 
