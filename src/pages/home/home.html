@@ -13,7 +13,7 @@
       <h3 id="nponame">St. Anthony Lower Elementary School</h3>
       <h6 id="npoplace">Milwaukee, WI</h6>
       <ion-icon [name]="showDetails ? 'arrow-up' : 'arrow-down'" style="float: right; margin: 0 20px; font-size: 30px;" item-right (click)="toggleDetails(d)"></ion-icon>
-    
+
     <div text-wrap class="item item-divider" style="width:100%;">
       <div *ngIf="showDetails">
         <p>{{data.summary}}</p>
@@ -27,7 +27,7 @@
     </div>
     </ion-item>
     <div class="content">
-    
+
 
 
     <h3 style="padding-top: 5px;">Donation Wishlist ({{ (donations | async)?.length }})</h3>
@@ -37,9 +37,9 @@
       </div>
       <h3>{{ donation.name }}</h3>
       <p>{{ donation.description }}</p>
-      <h4 style="display: inline-block;">${{ donation.price }}</h4>
+      <h4 style="display: inline-block;">{{ donation.price | currency : "USD" : 2 }}</h4>
       <h4 style="display: inline-block;" *ngIf="donation.quantity"> x {{ donation.quantity }} =</h4>
-      <h4 style="display: inline-block; font-weight:500;" *ngIf="donation.quantity">${{donation.quantity * donation.price}}</h4>
+      <h4 style="display: inline-block; font-weight:500;" *ngIf="donation.quantity">{{ donation.quantity * donation.price | currency : "USD" : 2 }}</h4>
       <div class="progress-outer">
         <div class="progress-inner" [style.width]="donation.donatedAmount / donation.requestAmount * 100 + '%'">
         </div>
