@@ -17,7 +17,7 @@ export class HomePage {
   showDetails: boolean;
   donations: Observable<any>;
 
-  constructor(public navCtrl: NavController, public modalCtrl: ModalController, db: AngularFirestore, private sanitizer: DomSanitizer) {
+  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public db: AngularFirestore, private sanitizer: DomSanitizer) {
     this.data = {
       summary: '4k – 2nd Grade',
       address: '1669 S. 5th Street',
