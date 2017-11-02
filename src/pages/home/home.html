@@ -12,7 +12,7 @@
     <ion-item no-lines ion-affix style="border-bottom: solid black;"[content]='content'>
       <h3 id="nponame">St. Anthony Lower Elementary School</h3>
       <h6 id="npoplace">Milwaukee, WI</h6>
-      <ion-icon [name]="showDetails ? 'arrow-up' : 'arrow-down'" style="float: right; margin: 0 20px; font-size: 30px;" item-right (click)="toggleDetails(d)"></ion-icon>
+      <ion-icon [name]="showDetails ? 'ios-arrow-up' : 'ios-arrow-down'" style="float: right; margin: 0 20px; font-size: 30px;" item-right (click)="toggleDetails(d)"></ion-icon>
 
     <div text-wrap class="item item-divider" style="width:100%;">
       <div *ngIf="showDetails">
@@ -32,13 +32,13 @@
 
     <h3 style="padding-top: 5px;">Donation Wishlist ({{ (donations | async)?.length }})</h3>
     <div class="donation-content" *ngFor="let donation of donations | async">
-      <div class="horizontal-center">
+      <div class="horizontal-center" (click)="Test(donation)">
         <img class="donation-img" src={{donation.image}} alt="{{donation.name}}">
       </div>
       <h3>{{ donation.name }}</h3>
       <p>{{ donation.description }}</p>
       <h4 style="display: inline-block;">{{ donation.price | currency : "USD" : 2 }}</h4>
-      <h4 style="display: inline-block;" *ngIf="donation.quantity"> x {{ donation.quantity }} =</h4>
+      <h4 style="display: inline-block;" *ngIf="donation.quantity"> x {{ donation.quantity }} = </h4>
       <h4 style="display: inline-block; font-weight:500;" *ngIf="donation.quantity">{{ donation.quantity * donation.price | currency : "USD" : 2 }}</h4>
       <div class="progress-outer">
         <div class="progress-inner" [style.width]="donation.donatedAmount / donation.requestAmount * 100 + '%'">

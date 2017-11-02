@@ -43,7 +43,7 @@ export class HomePage {
     return result;
   }
 
-  Test(n:number) {
+  Test(n:any) {
     console.log(n);
   }
 }
