@@ -15,7 +15,7 @@ export class HomePage {
   showDetails: boolean;
   donations: Observable<any>;
 
-  constructor(public navCtrl: NavController, public modalCtrl: ModalController, db: AngularFirestore) {
+  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public db: AngularFirestore) {
     this.data = {
       summary: '4k – 2nd Grade',
       address: '1669 S. 5th Street',
@@ -31,7 +31,10 @@ export class HomePage {
     this.showDetails = !this.showDetails;
   }
 
-  donate(quantity: number) {
+  donate(id: string, orig: any, quantity: any) {
+    this.db.collection('donations').doc(id).update({
+      donatedAmount: parseInt(orig) + parseInt(quantity)
+    });
     this.modalCtrl.create(DonatedPage).present();
   }
 
