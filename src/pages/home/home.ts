@@ -5,6 +5,8 @@ import { DonatedPage } from '../donated/donated';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 
+import { DomSanitizer  } from '@angular/platform-browser';
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -15,7 +17,7 @@ export class HomePage {
   showDetails: boolean;
   donations: Observable<any>;
 
-  constructor(public navCtrl: NavController, public modalCtrl: ModalController, db: AngularFirestore) {
+  constructor(public navCtrl: NavController, public modalCtrl: ModalController, db: AngularFirestore, private sanitizer: DomSanitizer) {
     this.data = {
       summary: '4k – 2nd Grade',
       address: '1669 S. 5th Street',
@@ -29,6 +31,19 @@ export class HomePage {
 
   toggleDetails() {
     this.showDetails = !this.showDetails;
+  }
+  
+  isGrey(don:any) {
+	var style = '';
+	if (don.donatedAmount >= don.requestAmount) {
+	  style = 'opacity: 0.2;';
+	  document.getElementById('quant').disabled = "true";
+	  document.getElementById('donate').disabled = "true";
+	  return this.sanitizer.bypassSecurityTrustStyle(style);
+	}
+	else {
+		return style;
+	}
   }
 
   donate(quantity: number) {
