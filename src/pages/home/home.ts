@@ -44,9 +44,8 @@ export class HomePage {
     }
   }
 
-  Disabled(don: any) {
-    //return this.disableSelector;
-    return (don.donatedAmount >= don.requestAmount);
+  Disabled(donationQuantity: number) {
+    return !(donationQuantity != null && !isNaN(donationQuantity) && donationQuantity > 0);
   }
 
   donate(id: string, orig: any, quantity: any) {

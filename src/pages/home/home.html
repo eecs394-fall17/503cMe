@@ -30,7 +30,7 @@
     <div class="content">
       <h3 style="padding-top: 5px;">Donation Wishlist ({{ (donations | async)?.length }})</h3>
       <div class="donation-content" *ngFor="let donation of donations | async">
-        <div *ngIf="Disabled(donation)" class="overlay">
+        <div *ngIf="donation.donatedAmount == donation.requestAmount" class="overlay">
           <img src="../assets/imgs/WishFulfilled.png" />
         </div>
         <div [style]="isGrey(donation)">
@@ -45,11 +45,11 @@
           <div class="horizontal-group">
             <ion-item class="quantity-select">
               <ion-label>Quantity</ion-label>
-              <ion-select [(ngModel)]="donation.quantity" [disabled]="Disabled(donation)">
+              <ion-select [(ngModel)]="donation.quantity">
                 <ion-option *ngFor="let n of donationQuantityIterable(donation.donatedAmount, donation.requestAmount)" value="{{n}}">{{n}}</ion-option>
               </ion-select>
             </ion-item>
-            <button ion-button [disabled]="Disabled(donation)" (click)="donate(donation.quantity)">Donate</button>
+            <button ion-button [disabled]="Disabled(donation.quantity)" (click)="Disabled(donation.quantity)">Donate</button>
           </div>
           <br /><br />
         </div>
