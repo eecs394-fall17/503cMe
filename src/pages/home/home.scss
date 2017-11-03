@@ -1,3 +1,84 @@
 page-home {
+  .content {
+    padding: 0 5%;
+  }
 
+  .horizontal-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+  }
+
+  .quantity-select {
+    width: 50%;
+  }
+
+  .horizontal-group button {
+    width: 40%;
+  }
+
+  .donation-img {
+    height: 200px;
+    margin: 10px 0;
+  }
+
+  .donation-content {
+    border-bottom: 1px solid gray;
+    padding: 5px 0;
+    position: relative;
+  }
+
+  .progress-outer {
+    width: 96%;
+    margin: 0 2%;
+    height: 25px;
+    text-align: center;
+    background-color: #f4f4f4;
+    border: 1px solid #dcdcdc;
+    color: #fff;
+  }
+
+  .progress-inner {
+    min-width: 2%;
+    height: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    padding: 2px;
+    background-color: map-get($colors, primary);
+  }
+
+  .donation-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 96%;
+    margin: 0 2%;
+  }
+
+  .donation-info p {
+    display: inline-block;
+  }
+
+  button:disabled,
+  button[disabled] {
+    background-color: #d3d3d3;
+  }
+
+  .overlay {
+    position: absolute;
+    left: -10%;
+    height: 80%;
+    width: 120%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+  }
+
+  .overlay img {
+    width: 50%;
+    height: 50%;
+  }
 }
