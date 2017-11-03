@@ -49,7 +49,7 @@
                 <ion-option *ngFor="let n of donationQuantityIterable(donation.donatedAmount, donation.requestAmount)" value="{{n}}">{{n}}</ion-option>
               </ion-select>
             </ion-item>
-            <button ion-button [disabled]="Disabled(donation.quantity)" (click)="Disabled(donation.quantity)">Donate</button>
+            <button ion-button [disabled]="Disabled(donation.quantity)" (click)="donate(donation.id, donation.donatedAmount, donation.quantity)">Donate</button>
           </div>
           <br /><br />
         </div>
