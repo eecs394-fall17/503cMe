@@ -27,6 +27,7 @@ page-home {
   .donation-content {
     border-bottom: 1px solid gray;
     padding: 5px 0;
+    position: relative;
   }
 
   .progress-outer {
@@ -59,8 +60,25 @@ page-home {
   .donation-info p {
     display: inline-block;
   }
-  
-  button:disabled, button[disabled] {
-	background-color: #d3d3d3;
+
+  button:disabled,
+  button[disabled] {
+    background-color: #d3d3d3;
+  }
+
+  .overlay {
+    position: absolute;
+    left: -10%;
+    height: 80%;
+    width: 120%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+  }
+
+  .overlay img {
+    width: 50%;
+    height: 50%;
   }
 }

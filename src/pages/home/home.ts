@@ -5,7 +5,7 @@ import { DonatedPage } from '../donated/donated';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 
-import { DomSanitizer  } from '@angular/platform-browser';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'page-home',
@@ -32,26 +32,21 @@ export class HomePage {
   toggleDetails() {
     this.showDetails = !this.showDetails;
   }
-  
-  isGrey(don:any) {
-	var style = '';
-	if (don.donatedAmount >= don.requestAmount) {
-	  style = 'opacity: 0.2;';
-	  return this.sanitizer.bypassSecurityTrustStyle(style);
-	}
-	else {
-		return style;
-	}
+
+  isGrey(don: any) {
+    var style = '';
+    if (don.donatedAmount >= don.requestAmount) {
+      style = 'opacity: 0.2;';
+      return this.sanitizer.bypassSecurityTrustStyle(style);
+    }
+    else {
+      return style;
+    }
   }
-  
+
   Disabled(don: any) {
-	  //return this.disableSelector;
-	  if (don.donatedAmount >= don.requestAmount) {
-		  return true;
-	  }
-	  else {
-		  return false;
-	  }
+    //return this.disableSelector;
+    return (don.donatedAmount >= don.requestAmount);
   }
 
   donate(id: string, orig: any, quantity: any) {
@@ -61,7 +56,7 @@ export class HomePage {
     this.modalCtrl.create(DonatedPage).present();
   }
 
-  donationQuantityIterable(curr: number, max:number) {
+  donationQuantityIterable(curr: number, max: number) {
     var result = [];
     for (var i = 1; i <= max - curr; i++) {
       result.push(i);
@@ -69,7 +64,7 @@ export class HomePage {
     return result;
   }
 
-  Test(n:any) {
+  Test(n: any) {
     console.log(n);
   }
 }
