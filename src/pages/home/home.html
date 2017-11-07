@@ -1,68 +1,15 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      503cME
-    </ion-title>
-  </ion-navbar>
+  <img src="../../assets/imgs/givistry_banner_large_white.png" />
 </ion-header>
 
-<ion-content #content>
-  <img src="../assets/imgs/st-anthony-school.jpg" alt="St Anthony">
-  <div class="">
-    <ion-item no-lines style="border-bottom: solid black;">
-      <h3 id="nponame">St. Anthony Lower Elementary School</h3>
-      <h6 id="npoplace">Milwaukee, WI</h6>
-      <ion-icon [name]="showDetails ? 'ios-arrow-up' : 'ios-arrow-down'" style="float: right; margin: 0 20px; font-size: 30px;" item-right (click)="toggleDetails(d)"></ion-icon>
-
-      <div text-wrap class="item item-divider" style="width:100%;">
-        <div *ngIf="showDetails">
-          <p>{{data.summary}}</p>
-          <br />
-          <p>{{data.address}}</p>
-          <p>{{data.state}}</p>
-          <p>Phone: {{data.phone}}</p>
-          <br />
-          <p>{{data.details}}</p>
-        </div>
-      </div>
-    </ion-item>
-
-    <div class="content">
-      <h3 style="padding-top: 5px;">Donation Wishlist ({{ (donations | async)?.length }})</h3>
-      <div class="donation-content" *ngFor="let donation of donations | async">
-        <div *ngIf="donation.donatedAmount == donation.requestAmount" class="overlay">
-          <img src="../assets/imgs/WishFulfilled.png" />
-        </div>
-        <div [style]="isGrey(donation)">
-          <div class="horizontal-center">
-            <img class="donation-img" src={{donation.image}} alt="{{donation.name}}">
-          </div>
-          <h3>{{ donation.name }}</h3>
-          <p>{{ donation.description }}</p>
-          <h4 style="display: inline-block;">{{ donation.price | currency : "USD" : 2 }}</h4>
-          <h4 style="display: inline-block;" *ngIf="donation.quantity"> x {{ donation.quantity }} = </h4>
-          <h4 style="display: inline-block; font-weight:500;" *ngIf="donation.quantity">{{ donation.quantity * donation.price | currency : "USD" : 2 }}</h4>
-          <div class="horizontal-group">
-            <ion-item class="quantity-select">
-              <ion-label>Quantity</ion-label>
-              <ion-select [(ngModel)]="donation.quantity">
-                <ion-option *ngFor="let n of donationQuantityIterable(donation.donatedAmount, donation.requestAmount)" value="{{n}}">{{n}}</ion-option>
-              </ion-select>
-            </ion-item>
-            <button ion-button [disabled]="Disabled(donation.quantity)" (click)="donate(donation.id, donation.donatedAmount, donation.quantity)">Donate</button>
-          </div>
-          <br /><br />
-        </div>
-        <div class="progress-outer">
-          <div class="progress-inner" [style.width]="donation.donatedAmount / donation.requestAmount * 100 + '%'">
-          </div>
-        </div>
-        <div class="donation-info">
-          <p>({{ donation.donatedAmount }}) Donated</p>
-          <p>({{ donation.requestAmount }}) Requested</p>
-        </div>
-        <br />
-      </div>
+<ion-content>
+  <div class="npo" *ngFor="let npo of npos | async" (click)="goToNpo(npo.id)">
+    <div class="container">
+      <img class="npo-icon" src="{{npo.images[0]}}" />
+    </div>
+    <div class="info">
+      <h5><b>{{npo.name}}</b> - {{npo.location}}</h5>
+      <p>{{npo.phone}}</p>
     </div>
   </div>
 </ion-content>

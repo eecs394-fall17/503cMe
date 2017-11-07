@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ViewController} from 'ionic-angular';
+import { ViewController, NavParams, IonicPage } from 'ionic-angular';
 
 /**
  * Generated class for the DonatedPage page.
@@ -15,15 +15,31 @@ import { ViewController} from 'ionic-angular';
 })
 export class DonatedPage {
 
-  constructor(private viewCtrl: ViewController) {
+  donated: boolean;
+  userDonations: any;
+
+  constructor(private viewCtrl: ViewController, params: NavParams) {
+    this.userDonations = params.data.userDonations;
+    this.donated = false;
   }
 
-  dismiss(data?) {
-	this.viewCtrl.dismiss(data);
+  dismiss() {
+    this.viewCtrl.dismiss(this.donated).catch(() => {});
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DonatedPage');
   }
 
+  total(userDonations: any) {
+    let res = 0;
+    userDonations.forEach(donation => {
+      res += donation.quantity * donation.price;
+    });
+    return res;
+  }
+
+  donate() {
+    this.donated = true;
+  }
 }
