@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, ModalController, IonicPage, NavParams } from 'ionic-angular';
+import { NavController, ModalController, IonicPage, NavParams, AlertController } from 'ionic-angular';
 import { DonatedPage } from '../donated/donated';
 
 import { AngularFirestore } from 'angularfire2/firestore';
@@ -19,7 +19,7 @@ export class NpoPage {
   showDetails: boolean;
   donations: Observable<any>;
   donationTotal: number;
-  userDonations: any = [];
+  userDonations: any = {};
   favorited: boolean;
 
   constructor(
@@ -27,7 +27,8 @@ export class NpoPage {
     public modalCtrl: ModalController,
     public db: AngularFirestore,
     private sanitizer: DomSanitizer,
-    params: NavParams
+    params: NavParams,
+    private alertCtrl: AlertController
   ) {
     let npoId = params.data;
     db.collection('npos').doc(npoId).valueChanges().subscribe((doc) => {
@@ -39,11 +40,10 @@ export class NpoPage {
     let self = this;
     this.donations.subscribe(ds => {
       ds.forEach(donation => {
-        self.userDonations.push({
-          name: donation.name,
-          price: donation.price,
+        self.userDonations[donation.id] = {
+          donation: donation,
           quantity: 0
-        })
+        }
       });
     });
     this.donationTotal = 0;
@@ -65,27 +65,32 @@ export class NpoPage {
     }
   }
 
-  Disabled(donationQuantity: number) {
-    return !(donationQuantity != null && !isNaN(donationQuantity) && donationQuantity > 0);
+  emptyDonationAlert() {
+    let alert = this.alertCtrl.create({
+      title: 'No items selected',
+      subTitle: "Please select donation items first",
+      buttons: ['Dismiss']
+    });
+    alert.present();
   }
 
   donate(id: string, orig: any, quantity: any) {
-    // this.db.collection('donations').doc(id).update({
-    //   donatedAmount: parseInt(orig) + parseInt(quantity)
-    // });
+    if (this.donationTotal == 0) {
+      return this.emptyDonationAlert();
+    }
     let self = this;
     let donated = this.modalCtrl.create(DonatedPage, {
       userDonations: self.userDonations
     });
     donated.present();
     donated.onDidDismiss(data => {
-      console.log(data);
       if (data) {
-        self.userDonations.forEach(donation => {
-          donation.quantity = 0;
-        })
+        for (let id in self.userDonations) {
+          self.userDonations[id].quantity = 0;
+        }
       }
     });
+    this.donationTotal = 0;
   }
 
   donationQuantityIterable(curr: number, max: number) {
@@ -97,13 +102,15 @@ export class NpoPage {
   }
 
   addDonation(donation: any) {
-    this.donationTotal = 0;
-    this.userDonations.forEach(d => {
-      if (d.name == donation.name) {
-        d.quantity = donation.quantity;
-      }
-      this.donationTotal += d.quantity * d.price;
-    });
+    let self = this;
+    var res = 0;
+    this.userDonations[donation.id].quantity = donation.quantity;
+
+    for (let id in this.userDonations) {
+      let d = this.userDonations[id];
+      res += d.quantity * d.donation.price;
+    }
+    this.donationTotal = res;
   }
 
   back() {

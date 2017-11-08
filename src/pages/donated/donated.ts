@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
 import { ViewController, NavParams, IonicPage } from 'ionic-angular';
 
-/**
- * Generated class for the DonatedPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { AngularFirestore } from 'angularfire2/firestore';
 
 @IonicPage()
 @Component({
@@ -18,7 +13,7 @@ export class DonatedPage {
   donated: boolean;
   userDonations: any;
 
-  constructor(private viewCtrl: ViewController, params: NavParams) {
+  constructor(private viewCtrl: ViewController, params: NavParams, public db: AngularFirestore) {
     this.userDonations = params.data.userDonations;
     this.donated = false;
   }
@@ -31,15 +26,32 @@ export class DonatedPage {
     console.log('ionViewDidLoad DonatedPage');
   }
 
-  total(userDonations: any) {
+  total() {
     let res = 0;
-    userDonations.forEach(donation => {
-      res += donation.quantity * donation.price;
-    });
+    for (let id in this.userDonations) {
+      let donation = this.userDonations[id];
+      res += donation.quantity * donation.donation.price;
+    }
     return res;
   }
 
   donate() {
+    let self = this;
+    for (let id in this.userDonations) {
+      let donation = this.userDonations[id];
+      self.db.collection('donations').doc(donation.donation.id).update({
+        donatedAmount: parseInt(donation.donation.donatedAmount) + parseInt(donation.quantity)
+      })
+    }
+
     this.donated = true;
+  }
+
+  userDonationsIterable() {
+    var res = [];
+    for (let id in this.userDonations) {
+      res.push(this.userDonations[id]);
+    }
+    return res;
   }
 }

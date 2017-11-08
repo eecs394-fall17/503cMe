@@ -22,7 +22,7 @@
         </div>
       </div>
     </ion-item>
-    <div class="expand" style="border-bottom: solid black 2px; width: 100%; height: 25px;">
+    <div class="expand" style="border-bottom: solid black 2px; width: 100%; height: 30px;">
       <ion-icon [name]="showDetails ? 'ios-arrow-up' : 'ios-arrow-down'" style="float: right; margin: 0 20px; font-size: 25px;" item-right (click)="toggleDetails(d)"></ion-icon>
     </div>
 
@@ -63,15 +63,13 @@
 </ion-content>
 
 <ion-footer>
-  <ion-toolbar>
-    <div class="donation-total">
-      <div class="total">
-        <ion-icon style="font-size: 3rem;" name="ios-cart-outline"></ion-icon>
-        <div style="text-align: center; display: inline-block; width: calc(100% - 30px);">
-          <h1>{{ donationTotal | currency : 'USD' : 2}}</h1>
-        </div>
+  <div class="donation-total">
+    <div class="total">
+      <ion-icon style="font-size: 3rem;" name="ios-cart-outline"></ion-icon>
+      <div style="text-align: center; display: inline-block; width: calc(100% - 30px);">
+        <h1>{{ donationTotal | currency : 'USD' : 2}}</h1>
       </div>
-      <button ion-button [disabled]="donationTotal == 0" (click)="donate(donationTotal)"><h1>Donate</h1></button>
     </div>
-  </ion-toolbar>
+    <button ion-button (click)="donate()"><h1>Donate</h1></button>
+  </div>
 </ion-footer>
