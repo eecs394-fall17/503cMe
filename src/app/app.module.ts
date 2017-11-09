@@ -7,6 +7,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { DonatedPage } from '../pages/donated/donated';
+import { NpoPage } from '../pages/npo/npo';
 
 // Import the AF2 Module
 import { AngularFireModule } from 'angularfire2';
@@ -28,7 +29,8 @@ export const firebaseConfig = {
   declarations: [
     MyApp,
     HomePage,
-    DonatedPage
+    DonatedPage,
+    NpoPage
   ],
   imports: [
     BrowserModule,
@@ -41,7 +43,8 @@ export const firebaseConfig = {
   entryComponents: [
     MyApp,
     HomePage,
-    DonatedPage
+    DonatedPage,
+    NpoPage
   ],
   providers: [
     StatusBar,

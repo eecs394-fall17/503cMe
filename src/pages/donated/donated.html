@@ -5,10 +5,35 @@
   Ionic pages and navigation.
 -->
 
-<ion-content class="backdrop" (click)="dismiss()">
-  <div class="center">
+<ion-content class="backdrop">
+  <ion-buttons end>
+    <button ion-button icon-only id="close-button" (click)="dismiss()">
+      <ion-icon item-right name="close"></ion-icon>
+    </button>
+  </ion-buttons>
+
+  <div *ngIf="donated" class="center">
     <img src="../assets/imgs/Thankyou_bear.png" />
     <h1>Thank you!</h1>
     <p>Your donation was beary nice of you</p>
+  </div>
+
+  <div *ngIf="!donated" class="content">
+    <h5>Please confirm donations</h5>
+    <br />
+    <div class="donation-content" *ngFor="let donation of userDonationsIterable()">
+      <div *ngIf="donation.quantity > 0">
+        <p>{{ donation.donation.name }}</p>
+        <h3 style="display: inline-block;">{{ donation.donation.price | currency : "USD" : 2 }}</h3>
+        <h3 style="display: inline-block;">x {{ donation.quantity }} = <b>{{ donation.donation.price * donation.quantity | currency : "USD" : 2 }}</b></h3>
+        <br />
+      </div>
+    </div>
+    <br />
+    <h5>Total</h5>
+    <h3><b>{{ total() | currency : 'USD' : 2}}</b></h3>
+    <div class="horizontal-center">
+      <button id="donate-button" ion-button color="light" (click)="donate()">Donate</button>
+    </div>
   </div>
 </ion-content>

@@ -27,6 +27,7 @@
     "angularfire2": "^5.0.0-rc.3",
     "cordova-plugin-ionic": "^2.0.2",
     "firebase": "^4.6.0",
+    "firebase-admin": "^5.4.3",
     "ion-affix": "^1.0.9",
     "ionic-angular": "3.8.0",
     "ionicons": "3.0.0",
