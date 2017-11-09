@@ -21,6 +21,7 @@ export class NpoPage {
   donationTotal: number;
   userDonations: any = {};
   favorited: boolean;
+  donationsRef: any;
 
   constructor(
     public navCtrl: NavController,
@@ -35,8 +36,10 @@ export class NpoPage {
       this.data = doc;
     });
 
+    this.donationsRef = db.collection('npos').doc(npoId).collection('donations');
+
     this.showDetails = false;
-    this.donations = db.collection('npos').doc(npoId).collection('donations').valueChanges();
+    this.donations = this.donationsRef.valueChanges();
     let self = this;
     this.donations.subscribe(ds => {
       ds.forEach(donation => {
@@ -80,17 +83,20 @@ export class NpoPage {
     }
     let self = this;
     let donated = this.modalCtrl.create(DonatedPage, {
-      userDonations: self.userDonations
+      userDonations: self.userDonations,
+      donationsRef: self.donationsRef
     });
     donated.present();
     donated.onDidDismiss(data => {
       if (data) {
-        for (let id in self.userDonations) {
-          self.userDonations[id].quantity = 0;
-        }
-        this.donationTotal = 0;
+        self.clearUserDonation();
       }
     });
+  }
+
+  clearUserDonation() {
+    this.userDonations = {};
+    this.donationTotal = 0;
   }
 
   donationQuantityIterable(curr: number, max: number) {
@@ -114,6 +120,7 @@ export class NpoPage {
   }
 
   back() {
+    this.clearUserDonation();
     this.navCtrl.pop();
   }
 
