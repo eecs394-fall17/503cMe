@@ -36,7 +36,7 @@ export class NpoPage {
     });
 
     this.showDetails = false;
-    this.donations = db.collection('donations').valueChanges();
+    this.donations = db.collection('npos').doc(npoId).collection('donations').valueChanges();
     let self = this;
     this.donations.subscribe(ds => {
       ds.forEach(donation => {

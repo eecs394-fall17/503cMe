@@ -3,7 +3,7 @@
 </ion-header>
 
 <ion-content>
-  <div class="npo" *ngFor="let npo of npos | async" (click)="goToNpo(npo.id)">
+  <div class="npo" [style.background-color]="i % 2 == 0 ? 'white' : '#ddd'" *ngFor="let npo of npos | async; let i = index" (click)="goToNpo(npo.id)">
     <div class="container">
       <img class="npo-icon" src="{{npo.images[0]}}" />
     </div>
