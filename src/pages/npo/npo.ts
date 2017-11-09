@@ -88,9 +88,9 @@ export class NpoPage {
         for (let id in self.userDonations) {
           self.userDonations[id].quantity = 0;
         }
+        this.donationTotal = 0;
       }
     });
-    this.donationTotal = 0;
   }
 
   donationQuantityIterable(curr: number, max: number) {
