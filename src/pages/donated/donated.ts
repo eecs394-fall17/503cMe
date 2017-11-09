@@ -12,9 +12,11 @@ export class DonatedPage {
 
   donated: boolean;
   userDonations: any;
+  donationsRef: any;
 
   constructor(private viewCtrl: ViewController, params: NavParams, public db: AngularFirestore) {
     this.userDonations = params.data.userDonations;
+    this.donationsRef = params.data.donationsRef;
     this.donated = false;
   }
 
@@ -39,7 +41,7 @@ export class DonatedPage {
     let self = this;
     for (let id in this.userDonations) {
       let donation = this.userDonations[id];
-      self.db.collection('donations').doc(donation.donation.id).update({
+      self.donationsRef.doc(donation.donation.id).update({
         donatedAmount: parseInt(donation.donation.donatedAmount) + parseInt(donation.quantity)
       })
     }
