@@ -64,12 +64,12 @@
 
 <ion-footer>
   <div class="donation-total">
-    <div class="total">
+    <div class="total" (click)="donate()">
       <ion-icon style="font-size: 3rem;" name="ios-cart-outline"></ion-icon>
       <div style="text-align: center; display: inline-block; width: calc(100% - 30px);">
         <h1>{{ donationTotal | currency : 'USD' : 2}}</h1>
       </div>
     </div>
-    <button ion-button (click)="donate()"><h1>Donate</h1></button>
+    <button ion-button><h1>Donate</h1></button>
   </div>
 </ion-footer>
