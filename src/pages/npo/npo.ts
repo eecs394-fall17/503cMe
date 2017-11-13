@@ -22,6 +22,7 @@ export class NpoPage {
   userDonations: any = {};
   favorited: boolean;
   donationsRef: any;
+  unfulfilledCount: number;
 
   constructor(
     public navCtrl: NavController,
@@ -41,11 +42,15 @@ export class NpoPage {
     this.showDetails = false;
     this.donations = this.donationsRef.valueChanges();
     let self = this;
+    this.unfulfilledCount = 0;
     this.donations.subscribe(ds => {
       ds.forEach(donation => {
         self.userDonations[donation.id] = {
           donation: donation,
           quantity: 0
+        }
+        if (donation.donatedAmount < donation.requestAmount) {
+          self.unfulfilledCount++;
         }
       });
     });
