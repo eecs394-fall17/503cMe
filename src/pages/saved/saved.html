@@ -2,28 +2,21 @@
   <img src="../../assets/imgs/givistry_banner_large_white.png" />
 </ion-header>
 
+
 <ion-content>
-  <div class="npo" [style.background-color]="i % 2 == 0 ? 'white' : '#ddd'" *ngFor="let npo of npos | async; let i = index" (click)="goToNpo(npo.id)">
-    <div class="container">
-      <img class="npo-icon" src="{{npo.images[0]}}" />
-    </div>
-    <div class="info">
-      <h5><b>{{npo.name}}</b> - {{npo.location}}</h5>
-      <p>{{npo.phone}}</p>
-    </div>
-  </div>
+  <h1>EMPTY FOR NOW</h1>
 </ion-content>
 
 <ion-footer>
   <table width="100%" height="100%">
     <tr width="100%">
-	  <td width="25%" align="center" id="current">
-	    <ion-icon style="font-size: 2rem;" name="search">
+	  <td width="25%" align="center" (click)="switchTabs('explore')">
+	    <ion-icon style="font-size: 2rem; color: white;" name="search">
 		  <h5 style="font-size: 1rem;">EXPLORE</h5>
 		</ion-icon>
 	  </td>
-	  <td width="25%" align="center" (click)="switchTabs('saved')">
-	    <ion-icon style="font-size: 2rem; color: white;" name="heart-outline">
+	  <td width="25%" align="center" id="current">
+	    <ion-icon style="font-size: 2rem;" name="heart-outline">
 		  <h5 style="font-size: 1rem;">SAVED</h5>
 		</ion-icon>
 	  </td>

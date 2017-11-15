@@ -8,6 +8,9 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { DonatedPage } from '../pages/donated/donated';
 import { NpoPage } from '../pages/npo/npo';
+import { SavedPage } from '../pages/saved/saved';
+import { ImpactPage } from '../pages/impact/impact';
+import { ProfilePage } from '../pages/profile/profile';
 
 // Import the AF2 Module
 import { AngularFireModule } from 'angularfire2';
@@ -30,7 +33,10 @@ export const firebaseConfig = {
     MyApp,
     HomePage,
     DonatedPage,
-    NpoPage
+    NpoPage,
+	SavedPage,
+	ImpactPage,
+	ProfilePage
   ],
   imports: [
     BrowserModule,
@@ -44,7 +50,10 @@ export const firebaseConfig = {
     MyApp,
     HomePage,
     DonatedPage,
-    NpoPage
+    NpoPage,
+	SavedPage,
+	ImpactPage,
+	ProfilePage
   ],
   providers: [
     StatusBar,

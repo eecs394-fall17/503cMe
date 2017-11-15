@@ -1,0 +1,15 @@
+page-profile {
+  ion-header {
+    height: 20%;
+    background-color: map-get($colors, primary);
+  }
+  
+  ion-footer {
+	height: 8%;
+    background-color: #758EA7;
+  }
+  
+  #current {
+	background-color: #CECE00;
+  }
+}

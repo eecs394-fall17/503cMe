@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { NavController, ModalController } from 'ionic-angular';
 import { DonatedPage } from '../donated/donated';
 import { NpoPage } from '../npo/npo';
+import { SavedPage } from '../saved/saved';
+import { ImpactPage } from '../impact/impact';
+import { ProfilePage } from '../profile/profile';
 
 import { AngularFirestore } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
@@ -22,5 +25,25 @@ export class HomePage {
 
   goToNpo(id: string) {
     this.navCtrl.push(NpoPage, id);
+  }
+  
+  switchTabs(id: string) {
+	switch(id) {
+		case "saved": {
+			this.navCtrl.setRoot(SavedPage);
+			break;
+		}
+		case "impact": {
+			this.navCtrl.setRoot(ImpactPage);
+			break;
+		}
+		case "profile": {
+			this.navCtrl.setRoot(ProfilePage);
+			break;
+		}
+		default: {
+			break;
+		}
+	}
   }
 }
