@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { NavController, ModalController, IonicPage, NavParams, AlertController } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { NavController, ModalController, IonicPage, NavParams, AlertController, Slides } from 'ionic-angular';
 import { DonatedPage } from '../donated/donated';
 
 import { AngularFirestore } from 'angularfire2/firestore';
@@ -23,6 +23,8 @@ export class NpoPage {
   favorited: boolean;
   donationsRef: any;
   unfulfilledCount: number;
+
+  @ViewChild(Slides) slides: Slides;
 
   constructor(
     public navCtrl: NavController,
@@ -131,5 +133,10 @@ export class NpoPage {
 
   favorite() {
     this.favorited = !this.favorited;
+  }
+
+  ngAfterViewInit() {
+    this.slides.freeMode = true;
+    this.slides.autoplayDisableOnInteraction = false;
   }
 }
