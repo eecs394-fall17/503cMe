@@ -3,6 +3,7 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import { IonicStorageModule } from '@ionic/storage';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -11,6 +12,8 @@ import { NpoPage } from '../pages/npo/npo';
 import { SavedPage } from '../pages/saved/saved';
 import { ImpactPage } from '../pages/impact/impact';
 import { ProfilePage } from '../pages/profile/profile';
+import { TabsPage } from '../pages/tabs/tabs';
+
 
 // Import the AF2 Module
 import { AngularFireModule } from 'angularfire2';
@@ -20,13 +23,13 @@ import { IonAffixModule } from 'ion-affix'
 
 // AF2 Settings
 export const firebaseConfig = {
-    apiKey: "AIzaSyBVk4WXC62YrsOIVP36p-89eh1gVwHxZcA",
-    authDomain: "cme-4f5c4.firebaseapp.com",
-    databaseURL: "https://cme-4f5c4.firebaseio.com",
-    projectId: "cme-4f5c4",
-    storageBucket: "cme-4f5c4.appspot.com",
-    messagingSenderId: "639950975877"
-  };
+  apiKey: "AIzaSyBVk4WXC62YrsOIVP36p-89eh1gVwHxZcA",
+  authDomain: "cme-4f5c4.firebaseapp.com",
+  databaseURL: "https://cme-4f5c4.firebaseio.com",
+  projectId: "cme-4f5c4",
+  storageBucket: "cme-4f5c4.appspot.com",
+  messagingSenderId: "639950975877"
+};
 
 @NgModule({
   declarations: [
@@ -34,16 +37,20 @@ export const firebaseConfig = {
     HomePage,
     DonatedPage,
     NpoPage,
-	SavedPage,
-	ImpactPage,
-	ProfilePage
+    SavedPage,
+    ImpactPage,
+    ProfilePage,
+    TabsPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp, {
+      tabsHideOnSubPages: true
+    }),
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule,
-    IonAffixModule
+    IonAffixModule,
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -51,9 +58,10 @@ export const firebaseConfig = {
     HomePage,
     DonatedPage,
     NpoPage,
-	SavedPage,
-	ImpactPage,
-	ProfilePage
+    SavedPage,
+    ImpactPage,
+    ProfilePage,
+    TabsPage
   ],
   providers: [
     StatusBar,

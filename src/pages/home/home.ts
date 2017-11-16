@@ -26,24 +26,4 @@ export class HomePage {
   goToNpo(id: string) {
     this.navCtrl.push(NpoPage, id);
   }
-  
-  switchTabs(id: string) {
-	switch(id) {
-		case "saved": {
-			this.navCtrl.setRoot(SavedPage);
-			break;
-		}
-		case "impact": {
-			this.navCtrl.setRoot(ImpactPage);
-			break;
-		}
-		case "profile": {
-			this.navCtrl.setRoot(ProfilePage);
-			break;
-		}
-		default: {
-			break;
-		}
-	}
-  }
 }

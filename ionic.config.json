@@ -2,5 +2,7 @@
   "name": "503cme",
   "app_id": "63f5112d",
   "type": "ionic-angular",
-  "integrations": {}
+  "integrations": {
+    "cordova": {}
+  }
 }

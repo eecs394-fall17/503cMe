@@ -11,27 +11,26 @@ import { ProfilePage } from '../profile/profile';
 })
 export class ImpactPage {
 
+  donationYear: number;
+  emailed: boolean;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  switchTabs(id: string) {
-	switch(id) {
-		case "explore": {
-			this.navCtrl.setRoot(HomePage);
-			break;
-		}
-		case "saved": {
-			this.navCtrl.setRoot(SavedPage);
-			break;
-		}
-		case "profile": {
-			this.navCtrl.setRoot(ProfilePage);
-			break;
-		}
-		default: {
-			break;
-		}
-	}
+  selectImage() {
+    if (this.donationYear && this.emailed) {
+      return "../../assets/imgs/check-your-email-icon.png"
+    } else if (this.donationYear) {
+      return "../../assets/imgs/email_icon.png"
+    } else {
+      return "../../assets/imgs/Adobe_icon.png"
+    }
+  }
+
+  sendEmail() {
+    if (this.donationYear) {
+      this.emailed = true;
+    }
   }
 
 }

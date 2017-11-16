@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController, ModalController, IonicPage, NavParams, AlertController, Slides } from 'ionic-angular';
 import { DonatedPage } from '../donated/donated';
+import { Storage } from '@ionic/storage';
 
 import { AngularFirestore } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
@@ -23,8 +24,13 @@ export class NpoPage {
   favorited: boolean;
   donationsRef: any;
   unfulfilledCount: number;
+  npoId: string;
 
+<<<<<<< HEAD
   //@ViewChild(Slides) slides: Slides;
+=======
+  // @ViewChild(Slides) slides: Slides;
+>>>>>>> aaaa6f0a700aadf1996cefb8b4122302b2fcd28e
 
   constructor(
     public navCtrl: NavController,
@@ -32,9 +38,11 @@ export class NpoPage {
     public db: AngularFirestore,
     private sanitizer: DomSanitizer,
     params: NavParams,
-    private alertCtrl: AlertController
+    private alertCtrl: AlertController,
+    private storage: Storage
   ) {
     let npoId = params.data;
+    this.npoId = npoId;
     db.collection('npos').doc(npoId).valueChanges().subscribe((doc) => {
       this.data = doc;
     });
@@ -57,7 +65,13 @@ export class NpoPage {
       });
     });
     this.donationTotal = 0;
-    this.favorited = false;
+    storage.get("test").then(bool => {
+      if (bool == "true") {
+        this.favorited = true;
+      } else {
+        this.favorited = false;
+      }
+    });
   }
 
   toggleDetails() {
@@ -86,6 +100,7 @@ export class NpoPage {
 
   donate(id: string, orig: any, quantity: any) {
     if (this.donationTotal == 0) {
+      console.log(this.favorited)
       return this.emptyDonationAlert();
     }
     let self = this;
@@ -133,10 +148,16 @@ export class NpoPage {
 
   favorite() {
     this.favorited = !this.favorited;
+    this.storage.set("test", this.favorited);
   }
 
   // ngAfterViewInit() {
+<<<<<<< HEAD
   //  this.slides.freeMode = true;
   //  this.slides.autoplayDisableOnInteraction = false;
+=======
+  //   this.slides.freeMode = true;
+  //   this.slides.autoplayDisableOnInteraction = false;
+>>>>>>> aaaa6f0a700aadf1996cefb8b4122302b2fcd28e
   // }
 }

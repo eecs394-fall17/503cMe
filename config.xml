@@ -86,4 +86,5 @@
         <variable name="CHANNEL_NAME" value="Master" />
         <variable name="UPDATE_METHOD" value="auto" />
     </plugin>
+    <plugin name="cordova-sqlite-storage" spec="^2.1.2" />
 </widget>

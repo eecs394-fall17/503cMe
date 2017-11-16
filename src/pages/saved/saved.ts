@@ -4,6 +4,8 @@ import { HomePage } from '../home/home';
 import { ImpactPage } from '../impact/impact';
 import { ProfilePage } from '../profile/profile';
 
+import { Storage } from '@ionic/storage';
+
 @IonicPage()
 @Component({
   selector: 'page-saved',
@@ -11,27 +13,45 @@ import { ProfilePage } from '../profile/profile';
 })
 export class SavedPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  favorites: any;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage) {
+  }
+
+  ionViewWillEnter() {
+    this.getFavorites();
   }
 
   switchTabs(id: string) {
-	switch(id) {
-		case "explore": {
-			this.navCtrl.setRoot(HomePage);
-			break;
-		}
-		case "impact": {
-			this.navCtrl.setRoot(ImpactPage);
-			break;
-		}
-		case "profile": {
-			this.navCtrl.setRoot(ProfilePage);
-			break;
-		}
-		default: {
-			break;
-		}
-	}
+    switch (id) {
+      case "explore": {
+        this.navCtrl.setRoot(HomePage);
+        break;
+      }
+      case "impact": {
+        this.navCtrl.setRoot(ImpactPage);
+        break;
+      }
+      case "profile": {
+        this.navCtrl.setRoot(ProfilePage);
+        break;
+      }
+      default: {
+        break;
+      }
+    }
+  }
+
+  getFavorites() {
+    let res = [];
+    let self = this;
+    this.storage.get("test").then(bool => {
+      if (bool) {
+        self.favorites = "it works";
+      } else {
+        self.favorites = "shit";
+      }
+    });
   }
 
 }

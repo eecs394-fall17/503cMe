@@ -2,34 +2,16 @@
   <img src="../../assets/imgs/givistry_banner_large_white.png" />
 </ion-header>
 
+<!-- <ion-content>
+  <div class="npo" [style.background-color]="i % 2 == 0 ? 'white' : '#ddd'" *ngFor="let npo of npos | async; let i = index" (click)="goToNpo(npo.id)">
+    <img class="npo-icon" src="{{npo.logo}}" />
+    <div class="info">
+      <h5><b>{{npo.name}}</b> - {{npo.location}}</h5>
+      <p>{{npo.phone}}</p>
+    </div>
+  </div>
+</ion-content> -->
 
 <ion-content>
-  <h1>EMPTY FOR NOW</h1>
+  <h1>{{ favorites }}</h1>
 </ion-content>
-
-<ion-footer>
-  <table width="100%" height="100%">
-    <tr width="100%">
-	  <td width="25%" align="center" (click)="switchTabs('explore')">
-	    <ion-icon style="font-size: 2rem; color: white;" name="search">
-		  <h5 style="font-size: 1rem;">EXPLORE</h5>
-		</ion-icon>
-	  </td>
-	  <td width="25%" align="center" id="current">
-	    <ion-icon style="font-size: 2rem;" name="heart-outline">
-		  <h5 style="font-size: 1rem;">SAVED</h5>
-		</ion-icon>
-	  </td>
-	  <td width="25%" align="center" (click)="switchTabs('impact')">
-	    <ion-icon style="font-size: 2rem; color: white;" name="bookmarks-outline">
-		  <h5 style="font-size: 1rem;">IMPACT</h5>
-		</ion-icon>
-	  </td>
-	  <td width="25%" align="center" (click)="switchTabs('profile')">
-	    <ion-icon style="font-size: 2rem; color: white;" name="contact-outline">
-		  <h5 style="font-size: 1rem;">PROFILE</h5>
-		</ion-icon>
-	  </td>
-	</tr>
-  </table>
-</ion-footer>
