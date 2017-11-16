@@ -2,16 +2,13 @@
   <img src="../../assets/imgs/givistry_banner_large_white.png" />
 </ion-header>
 
-<!-- <ion-content>
-  <div class="npo" [style.background-color]="i % 2 == 0 ? 'white' : '#ddd'" *ngFor="let npo of npos | async; let i = index" (click)="goToNpo(npo.id)">
+<ion-content>
+  <h1 *ngIf="favorites.length < 1">No saved NPOs</h1>
+  <div class="npo" [style.background-color]="i % 2 == 0 ? 'white' : '#ddd'" *ngFor="let npo of favorites; let i = index" (click)="goToNpo(npo.id)">
     <img class="npo-icon" src="{{npo.logo}}" />
     <div class="info">
       <h5><b>{{npo.name}}</b> - {{npo.location}}</h5>
       <p>{{npo.phone}}</p>
     </div>
   </div>
-</ion-content> -->
-
-<ion-content>
-  <h1>{{ favorites }}</h1>
 </ion-content>
