@@ -3,13 +3,17 @@ page-impact {
     height: 20%;
     background-color: map-get($colors, primary);
   }
-  
-  ion-footer {
-	height: 8%;
-    background-color: #758EA7;
+
+  #email-img {
+    width: 40%;
   }
-  
-  #current {
-	background-color: #CECE00;
+
+  .year-select {
+    width: 50%;
+  }
+
+  .year-select ion-select {
+    width: 100% !important;
+    max-width: 100%;
   }
 }
