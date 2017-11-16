@@ -26,11 +26,8 @@ export class NpoPage {
   unfulfilledCount: number;
   npoId: string;
 
-<<<<<<< HEAD
-  //@ViewChild(Slides) slides: Slides;
-=======
   // @ViewChild(Slides) slides: Slides;
->>>>>>> aaaa6f0a700aadf1996cefb8b4122302b2fcd28e
+
 
   constructor(
     public navCtrl: NavController,
@@ -152,12 +149,7 @@ export class NpoPage {
   }
 
   // ngAfterViewInit() {
-<<<<<<< HEAD
-  //  this.slides.freeMode = true;
-  //  this.slides.autoplayDisableOnInteraction = false;
-=======
   //   this.slides.freeMode = true;
   //   this.slides.autoplayDisableOnInteraction = false;
->>>>>>> aaaa6f0a700aadf1996cefb8b4122302b2fcd28e
   // }
 }
