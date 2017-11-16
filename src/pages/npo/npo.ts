@@ -24,7 +24,7 @@ export class NpoPage {
   donationsRef: any;
   unfulfilledCount: number;
 
-  @ViewChild(Slides) slides: Slides;
+  //@ViewChild(Slides) slides: Slides;
 
   constructor(
     public navCtrl: NavController,
@@ -135,8 +135,8 @@ export class NpoPage {
     this.favorited = !this.favorited;
   }
 
-  ngAfterViewInit() {
-    this.slides.freeMode = true;
-    this.slides.autoplayDisableOnInteraction = false;
-  }
+  // ngAfterViewInit() {
+  //  this.slides.freeMode = true;
+  //  this.slides.autoplayDisableOnInteraction = false;
+  // }
 }
