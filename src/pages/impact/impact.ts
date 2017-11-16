@@ -14,24 +14,4 @@ export class ImpactPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  switchTabs(id: string) {
-	switch(id) {
-		case "explore": {
-			this.navCtrl.setRoot(HomePage);
-			break;
-		}
-		case "saved": {
-			this.navCtrl.setRoot(SavedPage);
-			break;
-		}
-		case "profile": {
-			this.navCtrl.setRoot(ProfilePage);
-			break;
-		}
-		default: {
-			break;
-		}
-	}
-  }
-
 }
