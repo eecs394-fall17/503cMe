@@ -28,6 +28,7 @@ export class NpoPage {
 
   // @ViewChild(Slides) slides: Slides;
 
+
   constructor(
     public navCtrl: NavController,
     public modalCtrl: ModalController,
