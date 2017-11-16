@@ -61,12 +61,8 @@ export class NpoPage {
       });
     });
     this.donationTotal = 0;
-    storage.get("test").then(bool => {
-      if (bool == "true") {
-        this.favorited = true;
-      } else {
-        this.favorited = false;
-      }
+    storage.get(npoId).then(bool => {
+      this.favorited = bool || false;
     });
   }
 
@@ -144,7 +140,7 @@ export class NpoPage {
 
   favorite() {
     this.favorited = !this.favorited;
-    this.storage.set("test", this.favorited);
+    this.storage.set(this.npoId, this.favorited);
   }
 
   // ngAfterViewInit() {

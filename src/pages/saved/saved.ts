@@ -3,8 +3,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { ImpactPage } from '../impact/impact';
 import { ProfilePage } from '../profile/profile';
+import { NpoPage } from '../npo/npo';
 
 import { Storage } from '@ionic/storage';
+import { AngularFirestore } from 'angularfire2/firestore';
 
 @IonicPage()
 @Component({
@@ -13,9 +15,10 @@ import { Storage } from '@ionic/storage';
 })
 export class SavedPage {
 
-  favorites: any;
+  favorites: any = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage, public db: AngularFirestore) {
+
   }
 
   ionViewWillEnter() {
@@ -43,15 +46,21 @@ export class SavedPage {
   }
 
   getFavorites() {
-    let res = [];
+    this.favorites = [];
     let self = this;
-    this.storage.get("test").then(bool => {
-      if (bool) {
-        self.favorites = "it works";
-      } else {
-        self.favorites = "shit";
-      }
+    this.db.collection('npos').valueChanges().subscribe(npos => {
+      npos.forEach(npo => {
+        self.storage.get(npo['id']).then(bool => {
+          if (bool) {
+            self.favorites.push(npo);
+          }
+        })
+      })
     });
+  }
+
+  goToNpo(id: string) {
+    this.navCtrl.push(NpoPage, id);
   }
 
 }
