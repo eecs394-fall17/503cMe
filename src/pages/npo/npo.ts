@@ -26,7 +26,7 @@ export class NpoPage {
   unfulfilledCount: number;
   npoId: string;
 
-  // @ViewChild(Slides) slides: Slides;
+  @ViewChild(Slides) slides: Slides;
 
 
   constructor(
@@ -65,6 +65,11 @@ export class NpoPage {
     storage.get(npoId).then(bool => {
       this.favorited = bool || false;
     });
+  }
+  
+  //ngAfterViewInit() {
+  ionViewWillEnter() {
+    this.slides.autoplayDisableOnInteraction = false;
   }
 
   toggleDetails() {
@@ -143,9 +148,4 @@ export class NpoPage {
     this.favorited = !this.favorited;
     this.storage.set(this.npoId, this.favorited);
   }
-
-  // ngAfterViewInit() {
-  //   this.slides.freeMode = true;
-  //   this.slides.autoplayDisableOnInteraction = false;
-  // }
 }
