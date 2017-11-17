@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
-import { NavController, ModalController, IonicPage, NavParams, AlertController } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { NavController, ModalController, IonicPage, NavParams, AlertController, Slides } from 'ionic-angular';
 import { DonatedPage } from '../donated/donated';
+import { Storage } from '@ionic/storage';
 
 import { AngularFirestore } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
@@ -22,6 +23,11 @@ export class NpoPage {
   userDonations: any = {};
   favorited: boolean;
   donationsRef: any;
+  unfulfilledCount: number;
+  npoId: string;
+
+  @ViewChild(Slides) slides: Slides;
+
 
   constructor(
     public navCtrl: NavController,
@@ -29,9 +35,11 @@ export class NpoPage {
     public db: AngularFirestore,
     private sanitizer: DomSanitizer,
     params: NavParams,
-    private alertCtrl: AlertController
+    private alertCtrl: AlertController,
+    private storage: Storage
   ) {
     let npoId = params.data;
+    this.npoId = npoId;
     db.collection('npos').doc(npoId).valueChanges().subscribe((doc) => {
       this.data = doc;
     });
@@ -41,16 +49,27 @@ export class NpoPage {
     this.showDetails = false;
     this.donations = this.donationsRef.valueChanges();
     let self = this;
+    this.unfulfilledCount = 0;
     this.donations.subscribe(ds => {
       ds.forEach(donation => {
         self.userDonations[donation.id] = {
           donation: donation,
           quantity: 0
         }
+        if (donation.donatedAmount < donation.requestAmount) {
+          self.unfulfilledCount++;
+        }
       });
     });
     this.donationTotal = 0;
-    this.favorited = false;
+    storage.get(npoId).then(bool => {
+      this.favorited = bool || false;
+    });
+  }
+  
+  //ngAfterViewInit() {
+  ionViewWillEnter() {
+    this.slides.autoplayDisableOnInteraction = false;
   }
 
   toggleDetails() {
@@ -79,6 +98,7 @@ export class NpoPage {
 
   donate(id: string, orig: any, quantity: any) {
     if (this.donationTotal == 0) {
+      console.log(this.favorited)
       return this.emptyDonationAlert();
     }
     let self = this;
@@ -126,5 +146,6 @@ export class NpoPage {
 
   favorite() {
     this.favorited = !this.favorited;
+    this.storage.set(this.npoId, this.favorited);
   }
 }

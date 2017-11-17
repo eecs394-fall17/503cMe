@@ -1,0 +1,37 @@
+page-saved {
+  ion-header {
+    height: 20%;
+    background-color: map-get($colors, primary);
+  }
+
+  .npo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 30%;
+  }
+
+  .npo-icon {
+    width: 30%;
+  }
+
+  .info {
+    width: 60%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  ion-footer {
+    height: 8%;
+    background-color: #758EA7;
+  }
+
+  #current {
+    background-color: #CECE00;
+  }
+}

@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { NavController, ModalController } from 'ionic-angular';
 import { DonatedPage } from '../donated/donated';
 import { NpoPage } from '../npo/npo';
+import { SavedPage } from '../saved/saved';
+import { ImpactPage } from '../impact/impact';
+import { ProfilePage } from '../profile/profile';
 
 import { AngularFirestore } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';

@@ -1,0 +1,39 @@
+page-profile {
+  ion-header {
+    height: 20%;
+    background-color: map-get($colors, primary);
+  }
+
+  .profile-img {
+    width: 80%;
+  }
+
+  .profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .vertical-center {
+    justify-content: space-around;
+  }
+
+  .donations, .donations h1, .donations h4 {
+    font-weight: bold !important;
+    text-align: center;
+  }
+
+  .donations h1 {
+    font-size: 8rem !important;
+  }
+
+  ion-footer {
+	height: 8%;
+    background-color: #758EA7;
+  }
+
+  #current {
+	background-color: #CECE00;
+  }
+}

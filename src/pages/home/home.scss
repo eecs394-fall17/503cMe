@@ -9,20 +9,7 @@ page-home {
   }
 
   .npo-icon {
-    // border-radius: 50%;
-    height: 100%;
-    max-width: none;
-    float: left;
-    float: right;
-  }
-
-  .container {
     width: 30%;
-    border-radius: 50%;
-    height: 60%;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
   }
 
   .info {
@@ -37,5 +24,14 @@ page-home {
   ion-header {
     height: 20%;
     background-color: map-get($colors, primary);
+  }
+
+  ion-footer {
+	height: 8%;
+    background-color: #758EA7;
+  }
+
+  #current {
+	background-color: #CECE00;
   }
 }

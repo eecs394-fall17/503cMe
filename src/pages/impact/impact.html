@@ -1,0 +1,17 @@
+<ion-header>
+  <img src="../../assets/imgs/givistry_banner_large_white.png" />
+</ion-header>
+
+
+<ion-content>
+  <div class="vertical-center content">
+    <h3>See your good work!</h3>
+    <img id="email-img" src='{{ selectImage() }}' (click)="sendEmail()" />
+    <ion-item class="year-select">
+      <ion-select [(ngModel)]="donationYear">
+        <ion-option value={{NaN}} selected>Select year</ion-option>
+        <ion-option value="2017">2017</ion-option>
+      </ion-select>
+    </ion-item>
+  </div>
+</ion-content>

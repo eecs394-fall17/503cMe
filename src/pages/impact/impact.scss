@@ -1,0 +1,19 @@
+page-impact {
+  ion-header {
+    height: 20%;
+    background-color: map-get($colors, primary);
+  }
+
+  #email-img {
+    width: 40%;
+  }
+
+  .year-select {
+    width: 50%;
+  }
+
+  .year-select ion-select {
+    width: 100% !important;
+    max-width: 100%;
+  }
+}
