@@ -1,16 +1,17 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+
 import { NpoPage } from '../npo/npo';
-import { ResultsPage } from '../results/results';
 
 import { AngularFirestore } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 
+@IonicPage()
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html'
+  selector: 'page-results',
+  templateUrl: 'results.html',
 })
-export class HomePage {
+export class ResultsPage {
 
   npos: Observable<any>;
   searchInput: string;
@@ -23,7 +24,7 @@ export class HomePage {
     this.navCtrl.push(NpoPage, id);
   }
 
-  search(ev) {
-    this.navCtrl.push(ResultsPage, this.searchInput);
+  back() {
+    this.navCtrl.pop();
   }
 }

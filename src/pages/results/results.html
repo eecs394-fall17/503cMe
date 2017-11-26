@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-icon name="ios-arrow-back" (click)="back()"></ion-icon>
+  <img id="givistry-logo" src="../../assets/imgs/givistry_banner_white.png" />
+  <ion-icon name="lsdjflsdjf" (click)="favorite()"></ion-icon>
+</ion-header>
+
+<ion-content>
+  <div class="npo" [style.background-color]="i % 2 == 0 ? 'white' : '#ddd'" *ngFor="let npo of npos | async; let i = index" (click)="goToNpo(npo.id)">
+    <img class="npo-icon" src="{{npo.logo}}" />
+    <div class="info">
+      <h5><b>{{npo.name}}</b> - {{npo.location}}</h5>
+      <p>{{npo.phone}}</p>
+    </div>
+  </div>
+</ion-content>
