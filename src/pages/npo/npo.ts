@@ -62,11 +62,11 @@ export class NpoPage {
       });
     });
     this.donationTotal = 0;
-    storage.get(npoId).then(bool => {
+    storage.get(npoId + "_saved").then(bool => {
       this.favorited = bool || false;
     });
   }
-  
+
   //ngAfterViewInit() {
   ionViewWillEnter() {
     this.slides.autoplayDisableOnInteraction = false;
@@ -146,6 +146,6 @@ export class NpoPage {
 
   favorite() {
     this.favorited = !this.favorited;
-    this.storage.set(this.npoId, this.favorited);
+    this.storage.set(this.npoId + "_saved", this.favorited);
   }
 }

@@ -24,7 +24,7 @@ export class ResultsPage {
       this.results = this.npos.map(npos => {
         return npos.filter(npo => {
           console.log(npo.name.indexOf(params.data) !== -1);
-          return npo.name.indexOf(params.data) !== -1;
+          return npo.name.toLowerCase().indexOf(params.data.toLowerCase()) !== -1;
         });
       });
     }

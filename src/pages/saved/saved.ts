@@ -25,32 +25,12 @@ export class SavedPage {
     this.getFavorites();
   }
 
-  switchTabs(id: string) {
-    switch (id) {
-      case "explore": {
-        this.navCtrl.setRoot(HomePage);
-        break;
-      }
-      case "impact": {
-        this.navCtrl.setRoot(ImpactPage);
-        break;
-      }
-      case "profile": {
-        this.navCtrl.setRoot(ProfilePage);
-        break;
-      }
-      default: {
-        break;
-      }
-    }
-  }
-
   getFavorites() {
     this.favorites = [];
     let self = this;
     this.db.collection('npos').valueChanges().subscribe(npos => {
       npos.forEach(npo => {
-        self.storage.get(npo['id']).then(bool => {
+        self.storage.get(npo['id'] + "_saved").then(bool => {
           if (bool) {
             self.favorites.push(npo);
           }
