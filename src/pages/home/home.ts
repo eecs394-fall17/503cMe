@@ -14,6 +14,7 @@ export class HomePage {
 
   npos: Observable<any>;
   searchInput: string;
+  themes: Array<any> = ['animals','art','disaster-relief','education','energy','health','nature','science','social'];
 
   constructor(public navCtrl: NavController, public db: AngularFirestore) {
     this.npos = db.collection('npos').valueChanges();
@@ -25,5 +26,9 @@ export class HomePage {
 
   search(ev) {
     this.navCtrl.push(ResultsPage, this.searchInput);
+  }
+
+  test(input) {
+    console.log(input);
   }
 }
