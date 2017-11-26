@@ -34,4 +34,12 @@ page-home {
   #current {
 	background-color: #CECE00;
   }
+
+  .search {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #758EA7;
+    color: white;
+  }
 }

@@ -3,6 +3,12 @@
 </ion-header>
 
 <ion-content>
+  <ion-searchbar
+    placeholder="SEARCH ORGANIZATION BY NAME"
+    [(ngModel)]="searchInput"
+    [showCancelButton]="true"
+    cancelButtonText="Search"
+    (ionCancel)="search()"></ion-searchbar>
   <div class="npo" [style.background-color]="i % 2 == 0 ? 'white' : '#ddd'" *ngFor="let npo of npos | async; let i = index" (click)="goToNpo(npo.id)">
     <img class="npo-icon" src="{{npo.logo}}" />
     <div class="info">

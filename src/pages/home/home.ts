@@ -18,6 +18,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class HomePage {
 
   npos: Observable<any>;
+  searchInput: string;
 
   constructor(public navCtrl: NavController, public modalCtrl: ModalController, public db: AngularFirestore, private sanitizer: DomSanitizer) {
     this.npos = db.collection('npos').valueChanges();
@@ -25,5 +26,9 @@ export class HomePage {
 
   goToNpo(id: string) {
     this.navCtrl.push(NpoPage, id);
+  }
+
+  search(ev) {
+    console.log(this.searchInput)
   }
 }
