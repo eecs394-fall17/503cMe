@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { ViewController, NavParams, IonicPage } from 'ionic-angular';
+import { NavController, ViewController, NavParams, IonicPage } from 'ionic-angular';
 
 import { AngularFirestore } from 'angularfire2/firestore';
+
+import { TabsPage } from '../tabs/tabs';
 
 @IonicPage()
 @Component({
@@ -14,14 +16,19 @@ export class DonatedPage {
   userDonations: any;
   donationsRef: any;
 
-  constructor(private viewCtrl: ViewController, params: NavParams, public db: AngularFirestore) {
+  constructor(private viewCtrl: ViewController, params: NavParams, public db: AngularFirestore, public navCtrl: NavController) {
     this.userDonations = params.data.userDonations;
     this.donationsRef = params.data.donationsRef;
     this.donated = false;
   }
 
   dismiss() {
-    this.viewCtrl.dismiss(this.donated).catch(() => {});
+    if (this.donated) {
+      this.navCtrl.setRoot(TabsPage);
+      this.navCtrl.popToRoot();
+    } else {
+      this.viewCtrl.dismiss(this.donated).catch(() => { });
+    }
   }
 
   ionViewDidLoad() {
