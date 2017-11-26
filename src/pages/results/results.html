@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content>
-  <div class="npo" [style.background-color]="i % 2 == 0 ? 'white' : '#ddd'" *ngFor="let npo of npos | async; let i = index" (click)="goToNpo(npo.id)">
+  <div class="npo" [style.background-color]="i % 2 == 0 ? 'white' : '#ddd'" *ngFor="let npo of results | async; let i = index" (click)="goToNpo(npo.id)">
     <img class="npo-icon" src="{{npo.logo}}" />
     <div class="info">
       <h5><b>{{npo.name}}</b> - {{npo.location}}</h5>

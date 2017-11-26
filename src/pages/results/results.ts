@@ -14,10 +14,20 @@ import { Observable } from 'rxjs/Observable';
 export class ResultsPage {
 
   npos: Observable<any>;
-  searchInput: string;
+  results: Observable<any>;
 
-  constructor(public navCtrl: NavController, public db: AngularFirestore) {
+  constructor(public navCtrl: NavController, public db: AngularFirestore, public params: NavParams) {
     this.npos = db.collection('npos').valueChanges();
+    if (params.data == "") {
+      this.results = this.npos;
+    } else {
+      this.results = this.npos.map(npos => {
+        return npos.filter(npo => {
+          console.log(npo.name.indexOf(params.data) !== -1);
+          return npo.name.indexOf(params.data) !== -1;
+        });
+      });
+    }
   }
 
   goToNpo(id: string) {

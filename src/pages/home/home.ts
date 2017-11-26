@@ -18,10 +18,7 @@ export class HomePage {
 
   constructor(public navCtrl: NavController, public db: AngularFirestore) {
     this.npos = db.collection('npos').valueChanges();
-  }
-
-  goToNpo(id: string) {
-    this.navCtrl.push(NpoPage, id);
+    this.searchInput = '';
   }
 
   search(ev) {
