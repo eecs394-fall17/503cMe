@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, ViewController, NavParams, IonicPage } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 
 import { AngularFirestore } from 'angularfire2/firestore';
 
@@ -15,10 +16,13 @@ export class DonatedPage {
   donated: boolean;
   userDonations: any;
   donationsRef: any;
+  npoId: any;
 
-  constructor(private viewCtrl: ViewController, params: NavParams, public db: AngularFirestore, public navCtrl: NavController) {
+  constructor(private viewCtrl: ViewController, params: NavParams, public db: AngularFirestore, private storage: Storage, public navCtrl: NavController) {
     this.userDonations = params.data.userDonations;
     this.donationsRef = params.data.donationsRef;
+    this.npoId = params.data.npoId;
+    console.log(this.npoId);
     this.donated = false;
   }
 
@@ -52,6 +56,9 @@ export class DonatedPage {
         donatedAmount: parseInt(donation.donation.donatedAmount) + parseInt(donation.quantity)
       })
     }
+
+    console.log(this.npoId);
+    this.storage.set(this.npoId + '_donation', this.total());
 
     this.donated = true;
   }

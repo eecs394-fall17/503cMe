@@ -104,7 +104,8 @@ export class NpoPage {
     let self = this;
     let donated = this.modalCtrl.create(DonatedPage, {
       userDonations: self.userDonations,
-      donationsRef: self.donationsRef
+      donationsRef: self.donationsRef,
+      npoId: this.npoId,
     });
     donated.present();
     donated.onDidDismiss(data => {
