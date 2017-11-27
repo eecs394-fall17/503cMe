@@ -23,6 +23,7 @@ export class HomePage {
 
   search(ev) {
     this.navCtrl.push(ResultsPage, this.searchInput);
+    this.searchInput = '';
   }
 
   test(input) {

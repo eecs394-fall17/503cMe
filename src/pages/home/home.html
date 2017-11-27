@@ -3,11 +3,9 @@
     <img src="../../assets/imgs/givistry_banner_large_white.png" />
   </div>
   <ion-searchbar
-    placeholder="SEARCH ORGANIZATION BY NAME"
+    placeholder="SEARCH ORGS BY NAME"
     [(ngModel)]="searchInput"
-    [showCancelButton]="true"
-    cancelButtonText="Search"
-    (ionCancel)="search()"></ion-searchbar>
+    (keyup.enter)="search()"></ion-searchbar>
 </ion-header>
 
 <ion-content>
