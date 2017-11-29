@@ -1,13 +1,23 @@
 <ion-header>
-  <img src="../../assets/imgs/givistry_banner_large_white.png" />
+  <div class="header-bg">
+    <img src="../../assets/imgs/givistry_banner_large_white.png" />
+  </div>
+  <ion-searchbar
+    placeholder="SEARCH ORGS BY NAME"
+    [(ngModel)]="searchInput"
+    (keyup.enter)="search()"></ion-searchbar>
 </ion-header>
 
 <ion-content>
-  <div class="npo" [style.background-color]="i % 2 == 0 ? 'white' : '#ddd'" *ngFor="let npo of npos | async; let i = index" (click)="goToNpo(npo.id)">
-    <img class="npo-icon" src="{{npo.logo}}" />
-    <div class="info">
-      <h5><b>{{npo.name}}</b> - {{npo.location}}</h5>
-      <p>{{npo.phone}}</p>
+  <div class="horizontal-bar">
+    <div class="hbar"></div>
+    <h4>Browse by theme</h4>
+    <div class="hbar"></div>
+  </div>
+  <div class="themes">
+    <div class="theme" *ngFor="let theme of themes" (click)="test(theme)">
+      <img src="../../assets/imgs/browse_{{theme}}.png" />
+      <p>{{theme}}</p>
     </div>
   </div>
 </ion-content>

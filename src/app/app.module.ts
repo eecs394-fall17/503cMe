@@ -13,6 +13,7 @@ import { SavedPage } from '../pages/saved/saved';
 import { ImpactPage } from '../pages/impact/impact';
 import { ProfilePage } from '../pages/profile/profile';
 import { TabsPage } from '../pages/tabs/tabs';
+import { ResultsPage } from '../pages/results/results';
 
 
 // Import the AF2 Module
@@ -40,7 +41,8 @@ export const firebaseConfig = {
     SavedPage,
     ImpactPage,
     ProfilePage,
-    TabsPage
+    TabsPage,
+    ResultsPage
   ],
   imports: [
     BrowserModule,
@@ -61,7 +63,8 @@ export const firebaseConfig = {
     SavedPage,
     ImpactPage,
     ProfilePage,
-    TabsPage
+    TabsPage,
+    ResultsPage
   ],
   providers: [
     StatusBar,

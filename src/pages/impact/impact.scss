@@ -15,5 +15,52 @@ page-impact {
   .year-select ion-select {
     width: 100% !important;
     max-width: 100%;
+    border: 1px solid black;
+  }
+
+  .horizontal-bar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 0;
+    width: 100%;
+  }
+
+  .hbar {
+    height: 1px;
+    border: 1px solid black;
+    width: 35%;
+  }
+
+  .snapshot-header {
+    background-color: #ddd;
+    margin: 10px 0;
+  }
+
+  .snapshot-header h1 {
+    font-size: 4rem;
+  }
+
+  .npo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 30%;
+  }
+
+  .npo-icon {
+    width: 30%;
+  }
+
+  .info {
+    width: 60%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
   }
 }

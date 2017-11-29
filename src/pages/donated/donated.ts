@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
-import { ViewController, NavParams, IonicPage } from 'ionic-angular';
+import { NavController, ViewController, NavParams, IonicPage } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 
 import { AngularFirestore } from 'angularfire2/firestore';
+
+import { TabsPage } from '../tabs/tabs';
 
 @IonicPage()
 @Component({
@@ -13,15 +16,23 @@ export class DonatedPage {
   donated: boolean;
   userDonations: any;
   donationsRef: any;
+  npoId: any;
 
-  constructor(private viewCtrl: ViewController, params: NavParams, public db: AngularFirestore) {
+  constructor(private viewCtrl: ViewController, params: NavParams, public db: AngularFirestore, private storage: Storage, public navCtrl: NavController) {
     this.userDonations = params.data.userDonations;
     this.donationsRef = params.data.donationsRef;
+    this.npoId = params.data.npoId;
+    console.log(this.npoId);
     this.donated = false;
   }
 
   dismiss() {
-    this.viewCtrl.dismiss(this.donated).catch(() => {});
+    if (this.donated) {
+      this.navCtrl.setRoot(TabsPage);
+      this.navCtrl.popToRoot();
+    } else {
+      this.viewCtrl.dismiss(this.donated).catch(() => { });
+    }
   }
 
   ionViewDidLoad() {
@@ -45,6 +56,9 @@ export class DonatedPage {
         donatedAmount: parseInt(donation.donation.donatedAmount) + parseInt(donation.quantity)
       })
     }
+
+    console.log(this.npoId);
+    this.storage.set(this.npoId + '_donation', this.total());
 
     this.donated = true;
   }

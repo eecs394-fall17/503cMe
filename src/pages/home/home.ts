@@ -1,15 +1,10 @@
 import { Component } from '@angular/core';
-import { NavController, ModalController } from 'ionic-angular';
-import { DonatedPage } from '../donated/donated';
+import { NavController } from 'ionic-angular';
 import { NpoPage } from '../npo/npo';
-import { SavedPage } from '../saved/saved';
-import { ImpactPage } from '../impact/impact';
-import { ProfilePage } from '../profile/profile';
+import { ResultsPage } from '../results/results';
 
 import { AngularFirestore } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
-
-import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'page-home',
@@ -18,12 +13,20 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class HomePage {
 
   npos: Observable<any>;
+  searchInput: string;
+  themes: Array<any> = ['animals','art','disaster-relief','education','energy','health','nature','science','social'];
 
-  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public db: AngularFirestore, private sanitizer: DomSanitizer) {
+  constructor(public navCtrl: NavController, public db: AngularFirestore) {
     this.npos = db.collection('npos').valueChanges();
+    this.searchInput = '';
   }
 
-  goToNpo(id: string) {
-    this.navCtrl.push(NpoPage, id);
+  search(ev) {
+    this.navCtrl.push(ResultsPage, this.searchInput);
+    this.searchInput = '';
+  }
+
+  test(input) {
+    console.log(input);
   }
 }
