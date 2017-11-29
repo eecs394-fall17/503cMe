@@ -68,7 +68,7 @@ export class NpoPage {
   }
 
   //ngAfterViewInit() {
-  ionViewWillEnter() {
+  ionViewDidEnter() {
     this.slides.autoplayDisableOnInteraction = false;
   }
 
