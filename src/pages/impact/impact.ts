@@ -49,12 +49,12 @@ export class ImpactPage {
   }
 
   getDonations() {
-    this.donations = [];
-    this.results = [];
-    this.total = 0;
     let self = this;
-
-    this.npos.subscribe(npos => {
+    console.log("getting donations");
+    this.npos.forEach(npos => {
+      this.donations = [];
+      this.results = [];
+      this.total = 0;
       npos.forEach(npo => {
         self.storage.get(npo['id'] + '_donation').then(amount => {
           if (amount) {

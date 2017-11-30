@@ -23,7 +23,7 @@
     <h1>{{total | currency : 'USD' : 2}}</h1>
     <p>Total Dollars to Date</p>
   </div>
-  <div class="npo" [style.background-color]="i % 2 == 0 ? 'white' : '#ddd'" *ngFor="let npo of results; let i = index" (click)="goToNpo(npo.id)">
+  <div class="npo" [style.background-color]="i % 2 == 0 ? 'white' : '#ddd'" *ngFor="let npo of results; let i = index">
     <img class="npo-icon" src="{{npo.logo}}" />
     <div class="info">
       <h5><b>{{npo.name}}</b> - {{npo.location}}</h5>

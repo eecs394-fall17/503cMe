@@ -50,15 +50,23 @@ export class DonatedPage {
 
   donate() {
     let self = this;
+    let total = 0;
     for (let id in this.userDonations) {
       let donation = this.userDonations[id];
+      total += parseInt(donation.quantity) * donation.donation.price;
       self.donationsRef.doc(donation.donation.id).update({
         donatedAmount: parseInt(donation.donation.donatedAmount) + parseInt(donation.quantity)
       })
     }
 
-    console.log(this.npoId);
-    this.storage.set(this.npoId + '_donation', this.total());
+    this.storage.get(this.npoId + '_donation').then(amount => {
+      console.log(amount, total);
+      if (amount) {
+        self.storage.set(self.npoId + '_donation', total + amount);
+      } else {
+        self.storage.set(self.npoId + '_donation', total);
+      }
+    })
 
     this.donated = true;
   }
