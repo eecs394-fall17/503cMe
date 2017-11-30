@@ -41,7 +41,8 @@
           </div>
           <h3>{{ donation.name }}</h3>
           <p>{{ donation.description }}</p>
-          <h4 style="display: inline-block;">{{ donation.price | currency : "USD" : 2 }}</h4>
+          <!--<h4 style="display: inline-block;">{{ donation.price | currency : "USD" : 2 }}</h4>-->
+		  <h4 style="display: inline-block;">{{ donation.price | currency : "USD" : 0 }}</h4>
           <h4 style="display: inline-block;" *ngIf="donation.quantity > 0">x {{ donation.quantity }} = <b>{{ donation.price * donation.quantity | currency : "USD" : 2 }}</b></h4>
           <ion-item no-lines class="quantity-select">
             <ion-label>Quantity</ion-label>
