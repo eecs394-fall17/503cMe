@@ -47,7 +47,12 @@ $colors: (
 
 //Tab Colors
 $tabs-background: color($colors, bkgd);
-$tabs-tab-color-inactive: color($colors, white);
+$tabs-tab-color-active: white;
+$tabs-tab-color-inactive: white;
+.tab-button[aria-selected=true] {
+  background-color: #afc415;
+}
+
 
 
 
