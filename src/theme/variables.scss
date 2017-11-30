@@ -52,6 +52,9 @@ $tabs-tab-color-inactive: white;
 .tab-button[aria-selected=true] {
   background-color: #afc415;
 }
+.tab-button, .tabs-md, .tab-button-icon {
+  color: white !important;
+}
 
 
 
