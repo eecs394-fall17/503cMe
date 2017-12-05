@@ -1,26 +1,75 @@
-This is a starter template for [Ionic](http://ionicframework.com/docs/) projects.
+Givistry - The Registry for Giving
+=================================
 
-## How to use this template
+## DESCRIPTION
 
-*This template does not work on its own*. The shared files for each starter are found in the [ionic2-app-base repo](https://github.com/ionic-team/ionic2-app-base).
+Givistry is the directory for giving.
 
-To use this template, either create a new ionic project using the ionic node.js utility, or copy the files from this repository into the [Starter App Base](https://github.com/ionic-team/ionic2-app-base).
+Givistry allows users to browse non-profit organizations by the category of donations they are looking for, and make direct donations to them. Potential donors can select specific items to donate to the organizations.
 
-### With the Ionic CLI:
+## SYSTEM REQUIREMENTS
 
-Take the name after `ionic2-starter-`, and that is the name of the template to be used when using the `ionic start` command below:
+- Python 2.5+ (2.7.3 recommended)
+- Tested on Windows and OS X
+- Node.js, npm, ionic-cli
+
+## INSTALLATION
+
+Instructions are given in Unix command-line syntax. Use similar commands in Windows.
+
+Clone repository to local folder
 
 ```bash
-$ sudo npm install -g ionic cordova
-$ ionic start myBlank blank
+$ git clone https://github.com/eecs394-fall17/503cMe.git
 ```
 
-Then, to run it, cd into `myBlank` and run:
+Go to the newly cloned project
 
-```bash
-$ ionic cordova platform add ios
-$ ionic cordova run ios
+```
+$ cd 503cMe/
 ```
 
-Substitute ios for android if not on a Mac.
+Install all necessary packages
 
+```
+$ npm install
+```
+
+## FIREBASE
+ 
+To use firebase in the current app, first setup a database on at Firebase. Fill in app.components.ts with the authentication keys and other credentials to link your own firebase database to the app.
+
+## RUNNING
+
+To run the application in local browser
+
+```
+$ ionic serve
+```
+
+To run the application on devices
+
+```
+$ ionic cordova run android --device
+or
+$ ionic cordova run ios --device
+```
+ 
+## DEPLOYMENT
+ 
+ To deploy the app, create an account at Ionic Pro first. Then you can link the current app to Ionic Pro.
+ 
+ ```
+ $ cd 503cMe/
+ $ ionic link
+ 
+ to push current work to master branch of ionic app
+ $ git push ionic master
+ ```
+ 
+## UNFINISHED WORK
+ 
+- Direct payments in-app
+- Separate interface for organizations
+- Profile page
+- Messaging medium between organizations and donors
