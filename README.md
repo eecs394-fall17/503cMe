@@ -1,9 +1,7 @@
-Givistry - The Registry for Giving
-=================================
+# Givistry - The Registry for Giving
 
-## DESCRIPTION
-
-Givistry is the directory for giving.
+<img align="right" width="300" height="111"
+     title="Givistry Logo" src="./src/assets/imgs/givistry_bannerLOGO_lg.png">
 
 Givistry allows users to browse non-profit organizations by the category of donations they are looking for, and make direct donations to them. Potential donors can select specific items to donate to the organizations.
 
